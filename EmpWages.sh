@@ -1,4 +1,5 @@
-echo "Welcome to Employee Wage computation problem"isPartTimePresent=2
+echo "Welcome to Employee Wage computation problem"
+isPartTimePresent=2
 isFullTimePresent=1
 isAbsent=0
 wagePerHour=20

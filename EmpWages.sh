@@ -1,14 +1,12 @@
-echo "Welcome to Employee Wage computation problem"
-declare -a dailySalary
-isPartTimePresent=2
+echo "Welcome to Employee Wage computation problem"isPartTimePresent=2
 isFullTimePresent=1
 isAbsent=0
-monthSalary=0
 wagePerHour=20
-workingHr=0
-counter=0
-#assume 20 working days in a month
-for (( i=0; i<20; i++ ))
+workingDays=20
+maxHrsInMonth=100
+monthSalary=0
+totalWorkingHr=0
+for (( i=0; i<$workingDays && $totalWorkingHr<$maxHrsInMonth; i++ ))
 do
 	empCheck=$((RANDOM%3))
 	case $empCheck in
@@ -22,14 +20,7 @@ do
 			workingHr=0
 			;;
 	esac
-	dailySalary[((counter++))]=$((workingHr*wagePerHour))
+	totalWorkingHr=$((totalWorkingHr+workingHr))
 done
-echo "Daily Salary : ${dailySalary[@]}"
-
-for (( i=0; i<20; i++ ))
-do
-	sal=${dailySalary[i]}
-	monthSalary=$((monthSalary+sal))
-done
-echo "Monthly employee wage : $monthSalary"
-
+monthSalary=$((wagePerHour*totalWorkingHr))
+echo "Employee monthly wage : $monthSalary"
